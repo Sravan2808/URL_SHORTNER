@@ -5,7 +5,7 @@ import catchAsync from "../utils/tryCatchWrapper.js";
 export const createShortUrl = catchAsync(async (req, res, next) => {
   const { url } = req.body;
   const shortUrl = await createShortUrlWithoutUser(url);
-  res.send(process.env.APP_URL + shortUrl);
+  res.status(200).json({shortUrl:process.env.APP_URL + shortUrl});
 });
 
 export const redirectFromShortUrl = catchAsync(async (req, res) => {
