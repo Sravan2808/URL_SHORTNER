@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config("./.env");
 import connectDB from "./src/config/mongo_config.js";
 import { nanoid } from "nanoid";
+import user_routes from "./src/routes/user.routes.js";
 import auth_routes from "./src/routes/auth.routes.js";
 import short_url from "./src/routes/short_url.route.js";
 import { redirectFromShortUrl } from "./src/controller/short_url.controller.js";
@@ -23,6 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(attachUser);
+
+app.use("/api/user", user_routes);
 app.use("/api/auth", auth_routes);
 app.use("/api/create", short_url);
 app.use("/:id", redirectFromShortUrl);
