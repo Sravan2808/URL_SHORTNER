@@ -1,4 +1,4 @@
-import { findUserById } from "../dao/user.data";
+import { findUserById } from "../dao/user.data.js";
 import { verifyToken } from "../utils/helper.js";
 
 export const authMiddleware = async (req, res, next) => {
